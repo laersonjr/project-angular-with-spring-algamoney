@@ -1,8 +1,8 @@
 package com.algamoneyapi.config;
 
-public class ExemploMessageSourceCfg {
+/*public class ExemploMessageSourceCfg {
 
-/*
+*//*
     @Bean(name="messageSource")
     public ResourceBundleMessageSource bundleMessageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
@@ -10,6 +10,6 @@ public class ExemploMessageSourceCfg {
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-*/
+*//*
 
-}
+}*/
