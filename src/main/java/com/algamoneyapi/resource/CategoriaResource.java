@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/categorias")
@@ -26,8 +27,14 @@ public class CategoriaResource {
     }
 
     @GetMapping("/{codigo}")
-    public Categoria buscarPeloCodigo(@PathVariable Long codigo){
-        return categoriaRepository.findById(codigo).orElse(null);
+    public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo){
+        Optional<Categoria> buscarCategoria = categoriaRepository.findById(codigo);
+        return buscarCategoria.isPresent() ? ResponseEntity.ok().body(buscarCategoria.get()) : ResponseEntity.notFound().build();
+        /* Um outra forma para retorno customizado, seria utilizando .map, exemplo abaixo:
+        * return this.categoriaRepository.findById(codigo)
+            .map(categoria -> ResponseEntity.ok(categoria))
+  .         orElse(ResponseEntity.notFound().build());
+        * */
     }
 
     @PostMapping
