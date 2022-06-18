@@ -1,6 +1,8 @@
 package com.algamoneyapi.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "categoria")
@@ -11,7 +13,9 @@ public class Categoria {
     @Column(name = "codigo", nullable = false)
     private Long codigo;
 
-    @Column(name = "nome", length = 50)
+    @NotNull
+    @Size(min = 3, max = 50)
+    @Column(name = "nome")
     private String nome;
 
     public String getNome() {
