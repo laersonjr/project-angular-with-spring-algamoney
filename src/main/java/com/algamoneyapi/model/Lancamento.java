@@ -1,5 +1,7 @@
 package com.algamoneyapi.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,6 +17,8 @@ public class Lancamento {
     @Column(name = "descricao", nullable = false, length = 50)
     private String descricao;
 
+    //Ajustar formato no retorno Json
+    //@JsonFormat(pattern =  "dd/MM/yyyy")
     @Column(name = "data_vencimento", nullable = false)
     private LocalDate dataVencimento;
 
