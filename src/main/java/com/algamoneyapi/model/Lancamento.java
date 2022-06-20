@@ -3,6 +3,7 @@ package com.algamoneyapi.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -14,30 +15,36 @@ public class Lancamento {
     @Column(name = "codigo", nullable = false)
     private Long codigo;
 
+    @NotNull
     @Column(name = "descricao", nullable = false, length = 50)
     private String descricao;
 
     //Ajustar formato no retorno Json
     //@JsonFormat(pattern =  "dd/MM/yyyy")
+    @NotNull
     @Column(name = "data_vencimento", nullable = false)
     private LocalDate dataVencimento;
 
     @Column(name = "data_pagamento")
     private LocalDate dataPagamento;
 
+    @NotNull
     @Column(name = "valor", nullable = false, precision = 10, scale = 2)
     private BigDecimal valor;
 
     @Column(name = "observacao", length = 100)
     private String observacao;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TipoLancamento tipo;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "codigo_categoria")
     private Categoria categoria;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "codigo_pessoa")
     private Pessoa pessoa;
