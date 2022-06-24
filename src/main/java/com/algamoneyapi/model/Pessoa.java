@@ -1,5 +1,7 @@
 package com.algamoneyapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -55,6 +57,14 @@ public class Pessoa {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+
+    //Comentários necessários para o jackson ou Hibernate como enteder o metodo como uma propriedade para
+    // serielizar ou salavar no banco de dados
+    @JsonIgnore
+    @Transient
+    public boolean isInativo(){
+        return !this.ativo;
     }
 
     @Override
